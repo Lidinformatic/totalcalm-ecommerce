@@ -1,37 +1,79 @@
-# TotalCalm - E-commerce Frontend
+# TotalCalm Ecommerce
 
-## Descripción
+Aplicación web desarrollada en Django para una tienda de ropa deportiva enfocada en yoga y pilates.  
+Incluye catálogo de productos, detalle, carrito de compras y formulario de contacto.
 
-Proyecto del Módulo 2 del Bootcamp Academy.  
-Se trata de un e-commerce ficticio especializado en ropa deportiva para yoga y pilates.  
-Incluye páginas de **Home**, **Detalle de producto**, **Carrito** y **Contacto**, aplicando HTML5 semántico, Bootstrap para diseño responsivo y JavaScript para interacción básica.
+---
 
-## Tecnologías usadas
+## Instalación y ejecución
 
-- HTML5
-- CSS3 (estilos propios)
-- Bootstrap 5 (CDN)
-- JavaScript (DOM, eventos, localStorage)
-- Git/GitHub
+### Clonar el repositorio
 
-## Funcionalidades
+git clone https://github.com/Lidinformatic/totalcalm-ecommerce.git
+cd totalcalm-ecommerce
 
-- Navbar responsivo con logo y contador de carrito.
-- Home con grilla de productos (cards).
-- Página de detalle dinámica con imagen, descripción, precio y botón “Agregar al carrito”.
-- Carrito con listado dinámico, opción de eliminar, cálculo automático del total y mensaje de carrito vacío.
-- Persistencia del carrito con `localStorage`.
-- Página de contacto con formulario básico.
+- Crear entorno virtual
 
-## Estado actual
+python -m venv venv
 
-- HTML5 semántico ✔
-- Bootstrap responsivo ✔
-- Navbar y footer ✔
-- Home, Detalle, Carrito y Contacto estructurados ✔
-- JavaScript para interacción del carrito ✔
-- README completo con enlace al repo ✔
+- Activar entorno virtual
+  En Windows (PowerShell):
 
-## Repositorio
+venv\Scripts\activate
 
-[Enlace al repositorio en GitHub](https://github.com/Lidinformatic/ecommerce-frontend-m2)
+En Linux/Mac:
+source venv/bin/activate
+
+- Instalar dependencias
+  pip install -r requirements.txt
+
+Si no tienes requirements.txt, puedes generarlo con:
+
+pip freeze > requirements.txt
+
+- Migrar base de datos
+
+python manage.py migrate
+
+- Crear superusuario (para acceder al admin)
+
+python manage.py createsuperuser
+
+- Ejecutar servidor de desarrollo
+
+python manage.py runserver
+
+Accede en tu navegador a:
+http://127.0.0.1:8000
+
+- Estructura del proyecto
+
+totalcalm-ecommerce/
+│
+├── totalcalm/ # Configuración principal del proyecto
+├── tienda/ # App principal (productos, carrito, contacto)
+│ ├── templates/tienda/ # Templates HTML
+│ ├── static/tienda/ # Archivos estáticos (CSS, JS, imágenes)
+│ ├── models.py # Modelos de base de datos
+│ ├── views.py # Lógica de vistas
+│ └── urls.py # Rutas de la app
+│
+├── db.sqlite3 # Base de datos local
+├── manage.py # Comando principal de Django
+├── requirements.txt # Dependencias del proyecto
+└── README.md # Documentación del proyecto
+
+- Funcionalidades
+
+Home con catálogo de productos.
+Página de detalle de producto.
+Carrito de compras.
+Formulario de contacto.
+
+Panel de administración para gestionar productos y consultas.
+
+- Tecnologías
+  Python 3.14.3
+  Django 6.0.5
+  Bootstrap 5.3.2
+  SQLite (por defecto, fácilmente reemplazable por MySQL/PostgreSQL)
