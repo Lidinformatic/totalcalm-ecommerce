@@ -77,3 +77,15 @@ Panel de administración para gestionar productos y consultas.
   Django 6.0.5
   Bootstrap 5.3.2
   SQLite (por defecto, fácilmente reemplazable por MySQL/PostgreSQL)
+
+30-06-2026
+
+## Credenciales de prueba
+
+- **Admin**
+  Usuario: Lidia  
+  Clave: Lidi0354
+
+- **Cliente**
+  Usuario: cliente  
+  Clave: cl123456
