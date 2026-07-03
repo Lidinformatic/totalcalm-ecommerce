@@ -1,91 +1,48 @@
-{% load static %}
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TotalCalm - Detalle</title>
-    <!-- Bootstrap CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Estilos propios -->
-    <link rel="stylesheet" href="{% static 'tienda/css/style.css' %}" />
-    <script src="{% static 'tienda/js/app.js' %}"></script>
+{% extends 'tienda/base.html' %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-          <a
-            class="navbar-brand d-flex align-items-center"
-            href="{% url 'home' %}"
-          >
-            <img
-              src="{% static 'tienda/img/logo.png' %}"
-              alt="Logo Total Calm"
-              class="me-2 rounded-circle img-fluid"
-              style="max-width: 70px"
-            />
-            <span>TotalCalm</span>
-          </a>
-          <!-- Botón hamburguesa -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- Menú colapsable -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'carrito' %}">
-                  Carrito <span id="contador" class="badge bg-primary">0</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+{% block title %}Detalle{% endblock %}
+{% block nav_catalogo %}active{% endblock %}
 
-    <main class="container my-4 my-5 pt-5" style="margin-top: 120px">
-      <section class="row">
-        <article class="col-md-6">
-          <img
-            src="{% static 'tienda/img/leggings.jpg' %}"
-            class="img-fluid"
-            alt="Leggings Yoga"
+{% block content %}
+<main class="container my-5 pt-5" style="margin-top: 120px">
+  <section class="row">
+    <article class="col-md-6">
+      <img
+        src="{{ producto.imagen.url }}"
+        class="img-fluid rounded shadow-sm"
+        alt="{{ producto.nombre }}"
+      />
+    </article>
+    <article class="col-md-6">
+      <h2 class="card-title">{{ producto.nombre }}</h2>
+      <p class="card-text">{{ producto.descripcion }}</p>
+      <p class="card-text">
+        <strong>${{ producto.precio }}</strong>
+      </p>
+
+      <!-- Botón para agregar al carrito -->
+      <form method="post" action="{% url 'agregar_carrito' producto.id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input
+            type="number"
+            name="cantidad"
+            id="cantidad"
+            value="1"
+            min="1"
+            class="form-control"
+            required
           />
-        </article>
-        <article class="col-md-6">
-          <!-- Consistencia en estilos -->
-          <h2 class="card-title">Leggings Yoga</h2>
-          <p class="card-text">
-            Leggings cómodos y flexibles, ideales para pilates y yoga.
-          </p>
-          <p class="card-text"><strong>$19.990</strong></p>
-          <button class="btn btn-primary" id="agregarCarrito">
-            Agregar al carrito
-          </button>
-        </article>
-      </section>
-    </main>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Agregar al carrito
+        </button>
+      </form>
 
-    <footer class="bg-light text-center p-3 mt-4">
-      <small>© 2026 Total Calm</small>
-    </footer>
-  </body>
-</html>
+      <!-- Enlace para volver al catálogo -->
+      <a href="{% url 'catalogo' %}" class="btn btn-link mt-3">← Volver al catálogo</a>
+    </article>
+  </section>
+</main>
+{% endblock %}

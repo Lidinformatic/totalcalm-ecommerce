@@ -1,0 +1,49 @@
+<!-- prettier-ignore-start -->
+
+{% extends 'tienda/base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
+
+<!-- Hero / Portada -->
+<section class="text-center bg-light p-5 rounded shadow-sm">
+  <h1 class="fw-bold">Bienvenida a TotalCalm</h1>
+  <p class="lead">Tu tienda de ropa y accesorios para yoga y pilates</p>
+  <a href="{% url 'catalogo' %}" class="btn btn-primary btn-lg mt-3"
+    >Ver catálogo</a
+  >
+</section>
+
+<!-- Catálogo destacado -->
+<section class="mt-5">
+  <h2 class="mb-4 text-center">Productos destacados</h2>
+  <div class="row">
+    {% for producto in productos %}
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img
+          src="{{ producto.imagen.url }}"
+          class="card-img-top"
+          alt="{{ producto.nombre }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">${{ producto.precio }}</p>
+          <a
+            href="{% url 'detalle' producto.id %}"
+            class="btn btn-outline-primary"
+            >Ver más</a
+          >
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No hay productos disponibles aún.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+<!-- prettier-ignore-end -->

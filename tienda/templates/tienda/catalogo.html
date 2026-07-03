@@ -1,0 +1,33 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Catálogo{% endblock %}
+{% block nav_catalogo %}active{% endblock %}
+
+{% block content %}
+<section class="mt-5">
+  <h2 class="mb-4 text-center">Catálogo de productos</h2>
+
+  {% for categoria in categorias %}
+    <h3 class="mt-4">{{ categoria.nombre }}</h3>
+    <div class="row">
+      {% for producto in categoria.productos.all %}
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <p class="card-text">${{ producto.precio }}</p>
+              <a href="{% url 'detalle' producto.id %}" class="btn btn-outline-primary">Ver más</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center">No hay productos en esta categoría.</p>
+      {% endfor %}
+    </div>
+  {% empty %}
+    <p class="text-center">No hay categorías disponibles.</p>
+  {% endfor %}
+</section>
+{% endblock %}
+

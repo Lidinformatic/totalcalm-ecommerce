@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": "tienda/templates/**/*.html",
+      "options": {
+        "parser": "html",
+        "htmlWhitespaceSensitivity": "ignore"
+      }
+    }
+  ]
+}
