@@ -80,8 +80,6 @@ Panel de administración para gestionar productos y consultas.
   Bootstrap 5.3.2
   SQLite (por defecto, fácilmente reemplazable por MySQL/PostgreSQL)
 
-30-06-2026
-
 ## Credenciales de prueba
 
 Para probar el sistema, cree los siguientes usuarios en el admin de Django:
