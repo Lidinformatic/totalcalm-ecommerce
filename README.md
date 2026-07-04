@@ -33,6 +33,7 @@ pip freeze > requirements.txt
 
 - Migrar base de datos
 
+python manage.py makemigrations
 python manage.py migrate
 
 - Crear superusuario (para acceder al admin)
@@ -46,7 +47,16 @@ python manage.py runserver
 Accede en tu navegador a:
 http://127.0.0.1:8000
 
-- Estructura del proyecto
+Rutas principales
+/ → Home
+/catalogo/ → Catálogo de productos
+/detalle/<id>/ → Detalle de producto
+/carrito/ → Carrito de compras
+/carrito/confirmar/ → Confirmación de compra
+/contacto/ → Página de contacto
+/admin/ → Administración de productos, pedidos y usuarios
+
+Estructura del Proyecto
 
 totalcalm-ecommerce/
 │
@@ -64,15 +74,12 @@ totalcalm-ecommerce/
 ├── requirements.txt # Dependencias del proyecto
 └── README.md # Documentación del proyecto
 
-- Funcionalidades
-
-Home con productos destacados
-Página de detalle de producto
-Carrito de compras con validación de stock
-Formulario de contacto
-Panel de administración para gestionar productos y categorías
-
-Panel de administración para gestionar productos y consultas.
+Funcionalidades
+Home con productos destacados.
+Página de detalle de producto.
+Carrito de compras con validación de stock y confirmación de compra.
+Formulario de contacto.
+Panel de administración para gestionar productos, categorías y pedidos.
 
 - Tecnologías
   Python 3.14.3
@@ -93,3 +100,11 @@ Para probar el sistema, cree los siguientes usuarios en el admin de Django:
   Clave: cl123456
 
 > Nota: Estos usuarios no vienen incluidos en la base de datos del repositorio. Deben crearse manualmente con `python manage.py createsuperuser` o desde el panel de administración.
+
+Capturas de pantalla
+
+Home
+Catálogo
+Carrito
+Confirmación de compra
+Admin
