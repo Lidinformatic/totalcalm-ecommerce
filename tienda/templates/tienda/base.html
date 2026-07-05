@@ -32,7 +32,7 @@
               class="me-2 rounded-circle img-fluid"
               style="max-width: 60px"
             />
-            <span class="fw-bold">TotalCalm</span>
+            <span class="fw-bold" style="color: #8c7c47">Total Calm</span>
           </a>
           <!-- Botón hamburguesa -->
           <button
@@ -45,29 +45,60 @@
           </button>
           <!-- Menú -->
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
                 <a
                   class="nav-link {% block nav_home %}{% endblock %}"
                   href="{% url 'home' %}"
-                  >Home</a
                 >
+                  Home
+                </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% block nav_carrito %}{% endblock %}"
                   href="{% url 'carrito' %}"
                 >
-                  Carrito <span id="contador" class="badge bg-primary">0</span>
+                  Carrito
+                  <span id="contador" class="badge bg-primary ms-1">
+                    {{ carrito|length }}
+                  </span>
                 </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% block nav_contacto %}{% endblock %}"
                   href="{% url 'contacto' %}"
-                  >Contacto</a
                 >
+                  Contacto
+                </a>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <form
+                  action="{% url 'logout' %}"
+                  method="post"
+                  class="d-inline"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="btn btn-outline-danger btn-sm ms-2"
+                  >
+                    Cerrar sesión
+                  </button>
+                </form>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="btn btn-outline-primary btn-sm ms-2"
+                  href="{% url 'login' %}"
+                >
+                  Iniciar sesión
+                </a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -81,9 +112,9 @@
 
     <!-- Footer -->
     <footer class="bg-light text-center p-3 mt-4 border-top">
-      <small
-        >© 2026 Total Calm - Tienda de ropa deportiva para yoga y pilates</small
-      >
+      <small class="text-muted">
+        © 2026 TotalCalm - Tienda de Ropa Deportiva para Yoga y Pilates
+      </small>
     </footer>
 
     <!-- Bootstrap JS -->

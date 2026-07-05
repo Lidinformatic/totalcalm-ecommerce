@@ -1,0 +1,56 @@
+<!-- prettier-ignore-start -->
+{% extends 'tienda/base.html' %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-primary text-white text-center">
+        <h4 class="mb-0">Bienvenido a TotalCalm</h4>
+      </div>
+      <div class="card-body p-4">
+        <h5 class="text-center mb-4">Iniciar sesión</h5>
+
+        <!-- Mensajes de éxito/error -->
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mb-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <!-- Errores del formulario -->
+        {% if form.errors %}
+          <div class="alert alert-danger mb-3">
+            Usuario o contraseña incorrectos. Intenta nuevamente.
+          </div>
+        {% endif %}
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="id_username" class="form-label">Nombre de usuario</label>
+            {{ form.username }}
+          </div>
+          <div class="mb-3">
+            <label for="id_password" class="form-label">Contraseña</label>
+            {{ form.password }}
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-center text-muted">
+        ¿No tienes cuenta?
+        <a href="{% url 'signup' %}">Regístrate</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- prettier-ignore-end -->
+
+

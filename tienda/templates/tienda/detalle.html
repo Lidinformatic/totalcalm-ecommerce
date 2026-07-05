@@ -1,4 +1,6 @@
+<!-- prettier-ignore-start -->
 {% extends 'tienda/base.html' %}
+{% load humanize %}
 
 {% block title %}Detalle{% endblock %}
 {% block nav_catalogo %}active{% endblock %}
@@ -17,7 +19,7 @@
       <h2 class="card-title">{{ producto.nombre }}</h2>
       <p class="card-text">{{ producto.descripcion }}</p>
       <p class="card-text">
-        <strong>${{ producto.precio }}</strong>
+        <strong>${{ producto.precio|floatformat:0|intcomma }}</strong>
       </p>
 
       <!-- Botón para agregar al carrito -->
@@ -46,3 +48,5 @@
   </section>
 </main>
 {% endblock %}
+<!-- prettier-ignore-end -->
+

@@ -1,16 +1,21 @@
 # TotalCalm Ecommerce
 
-Aplicación web desarrollada en Django para una tienda de ropa deportiva enfocada en yoga y pilates.  
-Incluye catálogo de productos, detalle, carrito de compras y formulario de contacto.
+Repositorio GitHub: [https://github.com/Lidinformatic/totalcalm-ecommerce](https://github.com/Lidinformatic/totalcalm-ecommerce)
+
+Aplicación web desarrollada en **Django** para una tienda de ropa deportiva enfocada en yoga y pilates.  
+Incluye catálogo de productos, detalle, carrito de compras, confirmación de compra y formulario de contacto.
 
 ---
 
 ## Instalación y ejecución
 
-### Clonar el repositorio
+### 1. Clonar el repositorio
 
+```bash
 git clone https://github.com/Lidinformatic/totalcalm-ecommerce.git
 cd totalcalm-ecommerce
+
+
 
 - Crear entorno virtual
 
@@ -47,7 +52,10 @@ python manage.py runserver
 Accede en tu navegador a:
 http://127.0.0.1:8000
 
+
+
 Rutas principales
+
 / → Home
 /catalogo/ → Catálogo de productos
 /detalle/<id>/ → Detalle de producto
@@ -56,30 +64,34 @@ Rutas principales
 /contacto/ → Página de contacto
 /admin/ → Administración de productos, pedidos y usuarios
 
-Estructura del Proyecto
+
+
+### Estructura del Proyecto
 
 totalcalm-ecommerce/
 │
-├── totalcalm/ # Configuración principal del proyecto
-├── tienda/ # App principal (productos, carrito, contacto)
-│ ├── templates/tienda/ # Templates HTML
-│ ├── static/tienda/ # Archivos estáticos (CSS, JS, imágenes fijas)
-│ ├── models.py # Modelos de base de datos
-│ ├── views.py # Lógica de vistas
-│ └── urls.py # Rutas de la app
+├── totalcalm/              # Configuración principal del proyecto
+├── tienda/                 # App principal (productos, carrito, contacto)
+│   ├── templates/tienda/   # Templates HTML
+│   ├── static/tienda/      # Archivos estáticos (CSS, JS, imágenes fijas)
+│   ├── models.py           # Modelos de base de datos
+│   ├── views.py            # Lógica de vistas
+│   └── urls.py             # Rutas de la app
 │
-├── media/productos/ # Imágenes dinámicas subidas desde el admin
-├── db.sqlite3 # Base de datos local
-├── manage.py # Comando principal de Django
-├── requirements.txt # Dependencias del proyecto
-└── README.md # Documentación del proyecto
+├── media/productos/        # Imágenes dinámicas subidas desde el admin
+├── db.sqlite3              # Base de datos local
+├── manage.py               # Comando principal de Django
+├── requirements.txt        # Dependencias del proyecto
+└── README.md               # Documentación del proyecto
 
-Funcionalidades
-Home con productos destacados.
-Página de detalle de producto.
-Carrito de compras con validación de stock y confirmación de compra.
-Formulario de contacto.
-Panel de administración para gestionar productos, categorías y pedidos.
+
+
+### Funcionalidades
+* Home con productos destacados.
+* Página de detalle de producto.
+* Carrito de compras con validación de stock y confirmación de compra.
+* Formulario de contacto.
+* Panel de administración para gestionar productos, categorías y pedidos.
 
 - Tecnologías
   Python 3.14.3
@@ -92,19 +104,41 @@ Panel de administración para gestionar productos, categorías y pedidos.
 Para probar el sistema, cree los siguientes usuarios en el admin de Django:
 
 - **Admin**
-  Usuario: Lidia  
+  Usuario: Lidia
   Clave: Lidi0354
 
 - **Cliente**
-  Usuario: cliente  
+  Usuario: cliente
   Clave: cl123456
 
 > Nota: Estos usuarios no vienen incluidos en la base de datos del repositorio. Deben crearse manualmente con `python manage.py createsuperuser` o desde el panel de administración.
 
+
+
 Capturas de pantalla
 
+
+Creación de Usuarios
+
+Formulario de Creación de Usuarios
+
 Home
+
 Catálogo
+
 Carrito
+
 Confirmación de compra
-Admin
+
+Administración (categorías, productos, pedidos, usuarios)
+```
+
+## Estado del proyecto
+
+Este proyecto cumple con el MVP final del Módulo 8 – Ecommerce:
+
+Flujo completo de catálogo → carrito → confirmación.
+Persistencia de productos y pedidos en la base de datos.
+Autenticación y roles (cliente y administrador).
+Validaciones y mensajes claros en formularios.
+Documentación lista para portafolio.

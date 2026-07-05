@@ -1,11 +1,13 @@
+<!-- prettier-ignore-start -->
 {% extends 'tienda/base.html' %}
+{% load humanize %}
 
 {% block title %}Catálogo{% endblock %}
 {% block nav_catalogo %}active{% endblock %}
 
 {% block content %}
 <section class="mt-5">
-  <h2 class="mb-4 text-center">Catálogo de productos</h2>
+  <h2 class="mb-4 text-center">Catálogo de Productos</h2>
 
   {% for categoria in categorias %}
     <h3 class="mt-4">{{ categoria.nombre }}</h3>
@@ -13,10 +15,10 @@
       {% for producto in categoria.productos.all %}
         <div class="col-md-4 col-sm-6 mb-4">
           <div class="card h-100 shadow-sm">
-            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" />
             <div class="card-body">
               <h5 class="card-title">{{ producto.nombre }}</h5>
-              <p class="card-text">${{ producto.precio }}</p>
+              <p class="card-text">${{ producto.precio|floatformat:0|intcomma }}</p>
               <a href="{% url 'detalle' producto.id %}" class="btn btn-outline-primary">Ver más</a>
             </div>
           </div>
@@ -30,4 +32,4 @@
   {% endfor %}
 </section>
 {% endblock %}
-
+<!-- prettier-ignore-end -->
